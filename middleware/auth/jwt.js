@@ -25,7 +25,7 @@ function validate () {
       jwt.verify(token, publicKey, {algorithms: ['RS256']}, (err, decoded) => {
         if (err) {
           return next(err)
-        } else if (req.path !== '/users') {
+        } else if (req.path !== '/notifications/users') {
           User.findOne({user: decoded})
           .then((user) => {
             req.user = user

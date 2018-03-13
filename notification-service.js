@@ -37,9 +37,12 @@ app.use((req, res, next) => {
   next()
 })
 
+// Logging
+app.use((req, res, next) => { console.log(req.method + ': ' + req.path); next() })
+
 // Routes-------------------------------------------------------------------------------------------------------
-app.use('/users', user.create())
-app.use('/preferences', preferences.create())
+app.use('/notifications/users', user.create())
+app.use('/notifications/preferences', preferences.create())
 
 // Respond to client
 app.use(response())
